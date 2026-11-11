@@ -36,7 +36,9 @@ export function SummaryView() {
 
   function submit(e: FormEvent) {
     e.preventDefault();
-    setTickers(parseTickers(input));
+    const next = parseTickers(input);
+    if (next.length === 0) return;
+    setTickers(next);
   }
 
   return (

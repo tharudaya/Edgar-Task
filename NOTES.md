@@ -12,7 +12,7 @@
 - **Summary errors.** An unknown ticker gets its own error, and the other companies still load.
 - **Caching.** Tickers are cached for 24 hours and filings for 10 minutes, to keep SEC requests
   low.
-- **Simple UI.** Simple UI for the assigment
+- **Simple UI.** Simple UI for the assignment
 
 ## What I found
 
