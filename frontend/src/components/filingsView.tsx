@@ -1,6 +1,8 @@
-import { useState, type FormEvent } from 'react';
+import { useState } from 'react';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
-import { fetchFilings, type SortOrder } from '../api';
+
+import { fetchFilings } from '../api/filings';
+import type { SortOrder } from '../api/types';
 
 const PAGE_SIZE = 25;
 
@@ -17,8 +19,7 @@ export function FilingsView() {
     placeholderData: keepPreviousData,
   });
 
-  function changeCompany(e: FormEvent) {
-    e.preventDefault();
+  function changeCompany() {
     const next = tickerInput.trim().toUpperCase();
     if (!next) return;
     setTicker(next);
@@ -39,7 +40,7 @@ export function FilingsView() {
   return (
     <section>
       <div className="toolbar">
-        <form onSubmit={changeCompany}>
+        <form onSubmit={(e) => { e.preventDefault(); changeCompany() }}>
           <label>
             Ticker
             <input

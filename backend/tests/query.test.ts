@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+
 import { queryFilings } from '../src/filings/query';
 import type { Filing } from '../src/filings/types';
 

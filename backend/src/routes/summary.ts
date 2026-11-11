@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { z } from 'zod';
+
 import { getSummary } from '../summary/service';
 
 const MAX_TICKERS = 10;

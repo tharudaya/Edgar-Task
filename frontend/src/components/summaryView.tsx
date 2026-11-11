@@ -1,6 +1,8 @@
-import { useState, type FormEvent } from 'react';
+import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { fetchSummary, type CompanySummary } from '../api';
+
+import { fetchSummary } from '../api/summary';
+import type { CompanySummary } from '../api/types';
 
 const DEFAULT_TICKERS = 'AAPL, SPOT, JPM';
 const KEY_FORMS = ['10-K', '10-Q', '8-K', '20-F', '6-K'];
@@ -34,8 +36,10 @@ export function SummaryView() {
     enabled: tickers.length > 0,
   });
 
-  function submit(e: FormEvent) {
-    e.preventDefault();
+  console.log(error);
+
+
+  function submit() {
     const next = parseTickers(input);
     if (next.length === 0) return;
     setTickers(next);
@@ -43,7 +47,9 @@ export function SummaryView() {
 
   return (
     <section>
-      <form className="toolbar" onSubmit={submit}>
+      <form className="toolbar" onSubmit={(e) => {
+        e.preventDefault(); submit()
+      }}>
         <label>
           Tickers (up to 10)
           <input value={input} onChange={(e) => setInput(e.target.value)} size={40} />

@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+
 import { countFormsSince, findLatest, oneYearBefore } from '../src/summary/summarize';
 import type { Filing } from '../src/filings/types';
 

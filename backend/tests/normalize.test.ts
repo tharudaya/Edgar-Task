@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+
 import { toFilings } from '../src/filings/normalize';
 import { normalizeTicker } from '../src/edgar/tickers';
 import { padCik } from '../src/edgar/submissions';

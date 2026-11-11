@@ -162,6 +162,6 @@ backend/
   tests/
 frontend/
   src/
-    api.ts          API types and fetch functions
+    api/            fetch client, API types, one file per endpoint
     components/     FilingsView, SummaryView
 ```

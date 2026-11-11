@@ -31,32 +31,3 @@ export type SummaryResponse = {
 };
 
 export type SortOrder = 'asc' | 'desc';
-
-async function getJson<T>(path: string): Promise<T> {
-  const res = await fetch(`/api${path}`);
-  const body = await res.json().catch(() => null);
-  if (!res.ok) throw new Error(body?.error ?? `Request failed (${res.status})`);
-  return body as T;
-}
-
-export function fetchFilings(params: {
-  ticker: string;
-  form: string;
-  order: SortOrder;
-  page: number;
-  pageSize: number;
-}) {
-  const query = new URLSearchParams({
-    order: params.order,
-    page: String(params.page),
-    pageSize: String(params.pageSize),
-  });
-  if (params.form) query.set('form', params.form);
-  return getJson<FilingsResponse>(
-    `/companies/${encodeURIComponent(params.ticker)}/filings?${query}`,
-  );
-}
-
-export function fetchSummary(tickers: string[]) {
-  return getJson<SummaryResponse>(`/filings/summary?tickers=${encodeURIComponent(tickers.join(','))}`);
-}

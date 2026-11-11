@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import request from 'supertest';
+
 import { createApp } from '../src/app';
 import { HttpError } from '../src/libs/errors';
 
